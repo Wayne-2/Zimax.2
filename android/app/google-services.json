@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "671924310086",
+    "project_id": "zimax-5ca71",
+    "storage_bucket": "zimax-5ca71.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671924310086:android:b777faa8a48c5e77867a47",
+        "android_client_info": {
+          "package_name": "com.example.zimax"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT3d0eUqyYLNRzoSYshbYYCurEzOdoHlg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

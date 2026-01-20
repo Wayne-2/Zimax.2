@@ -1,0 +1,151 @@
+name: zimax
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  lucide_icons: ^0.257.0
+  google_fonts: ^6.3.3
+  carousel_slider: ^5.1.1
+  http: ^1.5.0
+  flutter_dotenv: ^6.0.0
+  flutter_animate: ^4.5.2
+  supabase_flutter: ^2.10.3
+  flutter_riverpod: ^3.0.3
+  path_provider: ^2.1.5
+  open_filex: ^4.7.0
+  loading_animation_widget:
+  flutter_svg: ^2.2.3
+  image_picker:
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+  intl: ^0.20.2
+  uuid: ^4.5.2
+  firebase_core: ^4.2.1
+  firebase_messaging: ^16.0.4
+  flutter_local_notifications: ^19.5.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  collection: ^1.17.0
+  flick_video_player: ^0.9.0
+  video_player: ^2.10.1
+  share_plus: ^12.0.1
+  livekit_client: ^2.6.1
+  permission_handler: ^12.0.1
+  rxdart: ^0.27.7
+  
+
+  
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  hive_generator: ^2.0.0
+  build_runner: ^2.3.0
+  flutter_launcher_icons: ^0.11.0
+  blur: ^3.1.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+flutter_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icons/zimax_logo.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/icons/zimax_logo.png"
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/bgimg1.png
+    - assets/logo.png
+    - assets/nopfp.png
+    - assets/logodark.png
+    - assets/app_bg.png
+    - assets/images/img2.png
+    - assets/images/img3.png
+    - assets/images/img4.png
+    - assets/images/img5.png
+    - assets/images/img6.png
+    - assets/appbaricon/bookmark.svg
+    - assets/appbaricon/info.svg
+    - assets/appbaricon/notification.svg
+    - assets/appbaricon/profile.svg
+    - assets/appbaricon/settings.svg
+    - assets/appbaricon/logout.svg
+    - assets/commicon/admin.svg
+    - assets/commicon/groupchat.svg
+    - assets/commicon/locker.svg
+    - assets/commicon/stream.svg
+    - assets/icons/more.svg
+    - assets/icons/post_icon.svg
+    - assets/icons/media.svg
+    - assets/icons/link.svg
+    - assets/icons/text.svg
+    - assets/icons/newchat.svg
+    - assets/icons/chat-fill.svg
+    - assets/icons/chat.svg
+    - assets/icons/livechat.svg
+    - assets/icons/home-fill.svg
+    - assets/icons/home.svg
+    - assets/icons/post-fill.svg
+    - assets/icons/post.svg
+    - assets/icons/search-fill.svg
+    - assets/icons/search.svg
+    - assets/icons/space-fill.svg
+    - assets/icons/space.svg
+    - assets/activicon/activity.svg
+    - assets/activicon/bookmark.svg
+    - assets/activicon/bookmark-filled.svg
+    - assets/activicon/comment.svg
+    - assets/activicon/like.svg
+    - assets/activicon/like-filled.svg
+    - assets/activicon/repost.svg
+    - assets/activicon/share.svg
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
