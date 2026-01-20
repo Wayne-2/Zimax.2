@@ -8,7 +8,8 @@ import 'package:zimax/src/appbar/notification.dart';
 import 'package:zimax/src/appbar/profile.dart';
 import 'package:zimax/src/auth/signin.dart';
 import 'package:zimax/src/components/svgicon.dart';
-import 'package:zimax/src/pages/extrapage.dart/settings_page.dart';
+import 'package:zimax/src/pages/extrapage/settings_page.dart';
+// import 'package:zimax/src/pages/extrapages/bookmarked.dart';
 import 'package:zimax/src/services/riverpod.dart';
 
 class AppDrawer extends ConsumerStatefulWidget {
@@ -101,11 +102,11 @@ class _AppDrawerState extends ConsumerState<AppDrawer> {
                     label: "Notifications",
                     onTap: () => _navigate(context, NotificationsPage()),
                   ),
-                  _buildMenuItem(
-                    icon: 'assets/appbaricon/bookmark.svg',
-                    label: "Saved Items",
-                    onTap: () {},
-                  ),
+                  // _buildMenuItem(
+                  //   icon: 'assets/appbaricon/bookmark.svg',
+                  //   label: "Saved Items",
+                  //   onTap: () => _navigate(context, BookmarkedPostsPage()),
+                  // ),
                   _buildMenuItem(
                     icon: 'assets/appbaricon/settings.svg',
                     label: "Settings and Privacy",

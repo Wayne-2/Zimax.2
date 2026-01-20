@@ -15,8 +15,8 @@ import 'package:zimax/src/models/chatitem.dart';
 import 'package:zimax/src/models/chatpreview.dart';
 // import 'package:zimax/src/models/mediapost.dart';
 import 'package:zimax/src/models/story.dart';
-import 'package:zimax/src/pages/extrapage.dart/addchat.dart';
-import 'package:zimax/src/pages/extrapage.dart/storypage.dart';
+import 'package:zimax/src/pages/extrapage/addchat.dart';
+import 'package:zimax/src/pages/extrapage/storypage.dart';
 import 'package:zimax/src/services/riverpod.dart';
 import 'package:zimax/src/components/publicprofile.dart';
 

@@ -2,6 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
@@ -13,6 +14,7 @@ import 'package:zimax/src/components/publicprofile.dart';
 import 'package:zimax/src/components/repostingbutton.dart';
 import 'package:zimax/src/components/sharebottomsheet.dart';
 import 'package:zimax/src/components/svgicon.dart';
+import 'package:zimax/src/models/mediapost.dart';
 
 class PostCard extends StatefulWidget {
   final String id;
@@ -32,6 +34,7 @@ class PostCard extends StatefulWidget {
   final String? title;
   final String postedTo;
   final bool initialLiked;
+  final bool bookmarked ;
 
 
   const PostCard({
@@ -52,8 +55,31 @@ class PostCard extends StatefulWidget {
     this.level = '',
     this.title,
     this.postedTo = '',
-    required this.initialLiked,
+    required this.initialLiked, 
+    required this.bookmarked,
   });
+
+  factory PostCard.fromMediaPost(MediaPost post) {
+  return PostCard(
+    id: post.userId,
+    username: post.username,
+    department: post.department,
+    status: post.status,
+    pfp: post.pfp,
+    postId: post.id,
+    postcontent: post.content ?? '',
+    imageUrl: post.mediaUrl,
+    repost: post.reposts.toString(),
+    like: post.likes.toString(),
+    comment: post.comments.toString(),
+    poll: post.polls.toString(),
+    createdAt: post.createdAt,
+    level: post.level,
+    title: post.title,
+    postedTo: post.postedTo, initialLiked: false, bookmarked: post.bookmarked,
+  );
+}
+
 
   @override
   State<PostCard> createState() => _PostCardState();
@@ -381,7 +407,11 @@ class _PostCardState extends State<PostCard> {
                 onTap: () {},
               ),
               const Spacer(),
-              const BookmarkButton(),
+              BookmarkButton(
+                postId: widget.postId,
+                initialBookmarked: widget.bookmarked,
+              ),
+
               const SizedBox(width: 16),
               _ActivIcon(
                 icon: 'assets/activicon/share.svg',
@@ -594,7 +624,14 @@ Future<void> _toggleLike() async {
 
 
 class BookmarkButton extends StatefulWidget {
-  const BookmarkButton({super.key});
+  final String postId;
+  final bool initialBookmarked;
+
+  const BookmarkButton({
+    super.key,
+    required this.postId,
+    required this.initialBookmarked,
+  });
 
   @override
   State<BookmarkButton> createState() => _BookmarkButtonState();
@@ -602,13 +639,18 @@ class BookmarkButton extends StatefulWidget {
 
 class _BookmarkButtonState extends State<BookmarkButton>
     with SingleTickerProviderStateMixin {
-  bool isBookmarked = false;
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
+  late bool isBookmarked;
+  bool isLoading = false;
+
+  late final AnimationController _controller;
+  late final Animation<double> _scaleAnimation;
+
+  final supabase = Supabase.instance.client;
 
   @override
   void initState() {
     super.initState();
+    isBookmarked = widget.initialBookmarked;
 
     _controller = AnimationController(
       vsync: this,
@@ -619,11 +661,82 @@ class _BookmarkButtonState extends State<BookmarkButton>
       TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.3), weight: 50),
       TweenSequenceItem(tween: Tween(begin: 1.3, end: 1.0), weight: 50),
     ]).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-
-    _controller.addStatusListener((status) {
-      if (status == AnimationStatus.completed) _controller.reset();
-    });
   }
+
+Future<void> _toggleBookmark() async {
+  ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          behavior: SnackBarBehavior.floating,
+          duration: const Duration(seconds: 2),
+          content: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: Colors.black87,
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.check_circle,
+                    color: Colors.white, size: 20),
+                const SizedBox(width: 12),
+                Text(
+                  "Saved to bookmarks",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+      
+  if (isLoading) return;
+
+  final user = supabase.auth.currentUser;
+  if (user == null) return;
+
+  setState(() {
+    isLoading = true;
+    isBookmarked = !isBookmarked;
+  });
+
+  _controller
+    ..reset()
+    ..forward();
+
+  try {
+    if (isBookmarked) {
+      await supabase.from('media_post_bookmarks').insert({
+        'user_id': user.id,
+        'media_post_id': widget.postId,
+      });
+
+      if (!mounted) return;
+
+      
+    } else {
+      await supabase
+          .from('media_post_bookmarks')
+          .delete()
+          .eq('user_id', user.id)
+          .eq('media_post_id', widget.postId);
+    }
+  } catch (e) {
+    if (!mounted) return;
+
+    // Rollback optimistic UI
+    setState(() => isBookmarked = !isBookmarked);
+  } finally {
+    if (mounted) {
+      setState(() => isLoading = false);
+    }
+  }
+}
+
 
   @override
   void dispose() {
@@ -631,18 +744,10 @@ class _BookmarkButtonState extends State<BookmarkButton>
     super.dispose();
   }
 
-  void _toggleBookmark() {
-    setState(() {
-      isBookmarked = !isBookmarked;
-    });
-    _controller.forward();
-    // TODO: Save bookmark state to backend if needed
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _toggleBookmark,
+      onTap: isLoading ? null : _toggleBookmark,
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: SvgIcon(
@@ -655,4 +760,4 @@ class _BookmarkButtonState extends State<BookmarkButton>
       ),
     );
   }
-}
+  }

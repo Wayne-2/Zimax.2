@@ -11,8 +11,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:zimax/src/components/svgicon.dart';
 import 'package:zimax/src/components/publicprofile.dart';
 import 'package:zimax/src/models/postmodel.dart';
-import 'package:zimax/src/pages/extrapage.dart/groupchat.dart';
-import 'package:zimax/src/pages/extrapage.dart/live_lessons_page.dart';
+import 'package:zimax/src/pages/extrapage/groupchat.dart';
+import 'package:zimax/src/pages/extrapage/live_lessons_page.dart';
 
 
 class Community extends StatefulWidget {

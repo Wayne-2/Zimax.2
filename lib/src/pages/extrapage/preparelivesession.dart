@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:zimax/src/pages/extrapage.dart/live_lessons_page.dart';
+import 'package:zimax/src/pages/extrapage/live_lessons_page.dart';
 
 class LiveClassSetupScreen extends StatefulWidget {
   const LiveClassSetupScreen({super.key});

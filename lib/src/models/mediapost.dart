@@ -16,6 +16,8 @@ class MediaPost {
   final int reposts;
   final String postedTo;
   final DateTime createdAt;
+  final bool bookmarked;
+
 
   MediaPost({
     required this.id,
@@ -34,7 +36,8 @@ class MediaPost {
     required this.liked,
     required this.postedTo,
     required this.reposts,
-    required this.createdAt,
+    required this.createdAt, 
+    required this.bookmarked,
   });
 
   factory MediaPost.fromJson(Map<String, dynamic> json) {
@@ -53,6 +56,7 @@ class MediaPost {
       comments: (json['comments_count'] ?? 0) as int,
       polls: (json['polls'] ?? 0) as int,
       postedTo: json['posted_to'] ?? "",
+      bookmarked: json['bookmarked'] ?? false,
       reposts: (json['reposts'] ?? 0) as int,
       createdAt: DateTime.tryParse(json['created_at'] ?? "") ??
           DateTime.now(), liked: (json['liked'] ?? false) as bool,

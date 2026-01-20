@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:zimax/src/pages/extrapage.dart/edit_profile_page.dart';
+import 'package:zimax/src/pages/extrapage/edit_profile_page.dart';
 import 'package:zimax/src/services/riverpod.dart';
 
 class SettingsPage extends ConsumerStatefulWidget {

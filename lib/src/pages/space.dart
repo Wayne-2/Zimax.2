@@ -7,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:zimax/src/models/communitymodel.dart';
-import 'package:zimax/src/pages/extrapage.dart/community.dart';
-import 'package:zimax/src/pages/extrapage.dart/createcommunity.dart';
+import 'package:zimax/src/pages/extrapage/community.dart';
+import 'package:zimax/src/pages/extrapage/createcommunity.dart';
 import 'package:zimax/src/services/riverpod.dart';
 import 'package:zimax/src/components/publicprofile.dart';
 

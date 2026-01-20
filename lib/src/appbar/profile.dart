@@ -7,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:zimax/src/appbar/tabcontent.dart';
-import 'package:zimax/src/pages/extrapage.dart/edit_profile_page.dart';
-import 'package:zimax/src/pages/extrapage.dart/settings_page.dart';
+import 'package:zimax/src/pages/extrapage/edit_profile_page.dart';
+import 'package:zimax/src/pages/extrapage/settings_page.dart';
 import 'package:zimax/src/services/riverpod.dart';
 
 class Profilepage extends ConsumerStatefulWidget {

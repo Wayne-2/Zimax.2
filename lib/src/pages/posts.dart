@@ -102,7 +102,8 @@ class _PostsState extends ConsumerState<Posts> {
       reposts: 0,
       postedTo: selectedCommunity ?? "",
       createdAt: DateTime.now(), 
-      liked: false,
+      liked: false, 
+      bookmarked: false,
     );
 
     try {

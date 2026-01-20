@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:zimax/src/pages/extrapage.dart/callpage.dart';
+import 'package:zimax/src/pages/extrapage/callpage.dart';
 
 class NotificationService {
   /// Global navigator key to push pages from anywhere
@@ -58,13 +58,16 @@ class NotificationService {
     token ??= await FirebaseMessaging.instance.getToken();
     if (token == null) return;
 
-    await supabase.from('device_tokens').upsert(
-      {
-        'user_id': user.id,
-        'token': token,
-      },
-      onConflict: 'token',
-    );
+await supabase.from('device_tokens').upsert(
+  {
+    'user_id': user.id,
+    'token': token,
+  },
+  onConflict: 'user_id,token', // now matches composite unique index
+);
+
+
+
 
     print('✅ FCM token saved for user: ${user.id}');
   }

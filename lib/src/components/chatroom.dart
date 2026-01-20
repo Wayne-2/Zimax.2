@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:zimax/src/models/chat_item_hive.dart';
-import 'package:zimax/src/pages/extrapage.dart/callpage.dart';
+import 'package:zimax/src/pages/extrapage/callpage.dart';
 import 'package:zimax/src/services/riverpod.dart';
 import 'package:zimax/src/components/publicprofile.dart';
 

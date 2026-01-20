@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:zimax/src/pages/extrapage.dart/placeholdersearchpage.dart';
+import 'package:zimax/src/pages/extrapage/placeholdersearchpage.dart';
 import 'package:zimax/src/services/riverpod.dart';
 import 'package:zimax/src/components/publicprofile.dart';
 

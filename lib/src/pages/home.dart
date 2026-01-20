@@ -157,7 +157,8 @@ class _HomeState extends ConsumerState<Home> {
                   createdAt: post.createdAt,
                   level: post.level,
                   title: post.title,
-                  postedTo: post.postedTo,
+                  postedTo: post.postedTo, 
+                  bookmarked: post.bookmarked,
                 );
 
                 // Show video tiles at random intervals (5-10 posts)

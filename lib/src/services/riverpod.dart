@@ -479,3 +479,24 @@ final followCountsStreamProvider =
   );
 });
 
+final bookmarkedPostsProvider =
+    StreamProvider.autoDispose<List<MediaPost>>((ref) {
+  final supabase = Supabase.instance.client;
+  final user = supabase.auth.currentUser;
+
+  if (user == null) return const Stream.empty();
+
+  return supabase
+      .from('media_posts')
+      .stream(primaryKey: ['id'])
+      .inFilter(
+        'id',
+        supabase
+            .from('media_post_bookmarks')
+            .select('media_post_id')
+            .eq('user_id', user.id) as List<Object>,
+      )
+      .order('created_at', ascending: false)
+      .map((rows) =>
+          rows.map((e) => MediaPost.fromJson(e)).toList());
+});
